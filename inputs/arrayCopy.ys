@@ -1,0 +1,49 @@
+.pos 0
+irmovq a, %r8
+irmovq b, %r9
+nop
+nop
+mrmovq (%r8), %rbx
+nop
+nop
+nop
+rmmovq %rbx, (%r9)
+mrmovq 8(%r8), %rbx
+nop
+nop
+nop
+rmmovq %rbx, 8(%r9)
+mrmovq 16(%r8), %rbx
+nop
+nop
+nop
+rmmovq %rbx, 16(%r9)
+mrmovq 24(%r8), %rbx
+nop
+nop
+nop
+rmmovq %rbx, 24(%r9)
+
+mrmovq (%r9), %rax
+mrmovq 8(%r9), %rbx
+mrmovq 16(%r9), %rcx
+mrmovq 24(%r9), %rdx
+
+halt
+nop
+nop
+nop
+nop
+
+a:
+    .quad 1
+    .quad 9
+    .quad 21
+    .quad 8
+
+b:
+    .quad 0
+    .quad 0
+    .quad 0
+    .quad 0
+

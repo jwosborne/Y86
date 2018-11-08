@@ -1,0 +1,166 @@
+#forward e_valE for valA
+irmovq $0, %rcx
+irmovq $1, %rdx
+nop
+nop
+
+irmovq $1, %rcx
+subq %rcx, %rdx
+
+jne failedr8
+
+#forward e_valE for valB
+irmovq $0, %rcx
+irmovq $1, %rdx
+nop
+nop
+
+irmovq $1, %rcx
+subq %rdx, %rcx
+
+jne failedr8
+
+#forward M_valE for valA
+irmovq $0, %rcx
+irmovq $1, %rdx
+nop
+nop
+
+irmovq $1, %rcx
+nop
+subq %rcx, %rdx
+
+jne failedr9
+
+#forward M_valE for valB
+irmovq $0, %rcx
+irmovq $1, %rdx
+nop
+nop
+
+irmovq $1, %rcx
+nop
+subq %rdx, %rcx
+
+jne failedr9
+
+#forward m_valM for valA
+irmovq one, %rbx
+irmovq $1, %rdx
+irmovq $0, %rcx
+nop
+nop
+nop
+
+mrmovq (%rbx), %rcx
+nop
+subq %rcx, %rdx
+
+jne failedr10
+
+#forward m_valM for valB
+irmovq one, %rbx
+irmovq $1, %rdx
+irmovq $0, %rcx
+nop
+nop
+nop
+
+mrmovq (%rbx), %rcx
+nop
+subq %rdx, %rcx
+
+jne failedr10
+
+#forward W_valE for valA
+irmovq $0, %rcx
+irmovq $1, %rdx
+nop
+nop
+
+irmovq $1, %rcx
+nop
+nop
+subq %rcx, %rdx
+
+jne failedr11
+
+#forward W_valE for valB
+irmovq $0, %rcx
+irmovq $1, %rdx
+nop
+nop
+
+irmovq $1, %rcx
+nop
+nop
+subq %rdx, %rcx
+
+jne failedr11
+
+#forward W_valM for valA
+irmovq one, %rbx
+irmovq $1, %rdx
+irmovq $0, %rcx
+nop
+nop
+nop
+
+mrmovq (%rbx), %rcx
+nop
+nop
+subq %rcx, %rdx
+
+jne failedr12
+
+#forward W_valM for valB
+irmovq one, %rbx
+irmovq $1, %rdx
+irmovq $0, %rcx
+nop
+nop
+nop
+
+mrmovq (%rbx), %rcx
+nop
+nop
+subq %rdx, %rcx
+
+jne failedr12
+
+#to use a $1 from memory
+one: .quad $1
+
+    #cases for failure of any type of forwarding path
+failedr8:       #Error in e_valE
+    nop
+    nop
+    irmovq $-1, %r8
+    jmp end
+failedr9:       #Error in M_valE
+    nop
+    nop
+    irmovq $-1, %r9
+    jmp end
+failedr10:      #Error in m_valM
+    nop
+    nop
+    irmovq $-1, %r10
+    jmp end
+failedr11:      #Error in W_valE
+    nop
+    nop
+    irmovq $-1, %r11
+    jmp end
+failedr12:      #Error in W_valM
+    nop
+    nop
+    irmovq $-1, %r12
+    jmp end
+
+end:
+halt
+nop
+nop
+nop
+nop

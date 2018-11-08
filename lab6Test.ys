@@ -1,0 +1,9 @@
+ .pos 0
+    nop
+    nop
+    nop
+    halt
+    nop
+    nop
+    nop
+    nop

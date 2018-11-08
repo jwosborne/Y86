@@ -1,0 +1,60 @@
+.pos 0
+irmovq a, %r8
+irmovq b, %r9
+irmovq $8, %r10
+irmovq $32, %r11
+irmovq stack, %rsp
+addq %r11, %r9
+pushq %r8
+addq %r10, %r8
+nop
+nop 
+pushq %r8
+addq %r10, %r8
+nop 
+nop 
+pushq %r8
+addq %r10, %r8
+nop
+nop 
+pushq %r8
+nop
+nop 
+popq %r9
+subq %r10, %r9
+nop  
+nop 
+popq %r9
+subq %r10, %r9
+nop
+nop 
+popq %r9
+subq %r10, %r9
+nop
+nop 
+popq %r9
+halt
+nop
+nop
+nop
+nop
+
+a:
+    .quad 1
+    .quad 9
+    .quad 21
+    .quad 8
+
+b:
+    .quad 0
+    .quad 0 
+    .quad 0
+    .quad 0
+	
+	.quad 0
+    .quad 0 
+    .quad 0
+	.quad 0 
+stack:
+	
+
